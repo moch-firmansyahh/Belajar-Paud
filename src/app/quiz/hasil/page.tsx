@@ -67,7 +67,7 @@ export default function HasilQuizPage() {
         <Button asChild size="lg" className="rounded-xl font-semibold gap-2">
           <Link href="/quiz">
             <Sparkles className="h-4 w-4" />
-            <span>Mulai Quiz Baru</span>
+            <span>Atur Quiz Baru</span>
           </Link>
         </Button>
       </div>
@@ -216,8 +216,8 @@ export default function HasilQuizPage() {
               className="w-full sm:w-auto h-12 rounded-xl font-bold gap-2 cursor-pointer shadow-md justify-center active:scale-98 transition-transform"
             >
               <Link href="/quiz">
-                <RotateCcw className="h-4 w-4" />
-                <span>Quiz Baru (Pengaturan Sama)</span>
+                <Sparkles className="h-4 w-4" />
+                <span>Atur Quiz Baru</span>
               </Link>
             </Button>
 

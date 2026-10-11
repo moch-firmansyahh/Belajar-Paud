@@ -37,7 +37,7 @@ export function FormPengaturanQuiz({ materiList }: FormPengaturanQuizProps) {
   const searchParams = useSearchParams();
   const urlMateri = searchParams.get("materi");
 
-  const { saveSession } = useQuizSession();
+  const { session, clearSession, saveSession } = useQuizSession();
   const { getSoalLamaStems } = useQuizHistory();
 
   // State form
@@ -49,6 +49,13 @@ export function FormPengaturanQuiz({ materiList }: FormPengaturanQuizProps) {
   // State request
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
+  // Bersihkan sesi lama yang sudah selesai ketika masuk ke pengaturan kuis
+  useEffect(() => {
+    if (session?.selesai) {
+      clearSession();
+    }
+  }, [session?.selesai, clearSession]);
 
   // Inisialisasi dari URL query atau localStorage
   useEffect(() => {

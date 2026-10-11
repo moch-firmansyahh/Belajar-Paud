@@ -69,7 +69,7 @@ export default function KerjakanQuizPage() {
           <Button asChild size="lg" className="rounded-xl font-semibold gap-2">
             <Link href="/quiz">
               <Sparkles className="h-4 w-4" />
-              <span>Buat Quiz Baru</span>
+              <span>Atur Quiz Baru</span>
             </Link>
           </Button>
           <Button asChild variant="outline" size="lg" className="rounded-xl font-semibold gap-2">

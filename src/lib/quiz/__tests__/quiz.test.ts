@@ -96,6 +96,21 @@ describe("Quiz Utilities & Scoring", () => {
       expect(res.success).toBe(true);
     });
 
+    it("harus otomatis memotong pokok soal lama jika melebihi 300 karakter", () => {
+      const longStem = "A".repeat(500);
+      const res = GenerateQuizRequestSchema.safeParse({
+        materiSlugs: ["01-psikologi-dan-perkembangan-anak"],
+        jumlahPg: 5,
+        jumlahEssay: 0,
+        kesulitan: "campur",
+        soalSebelumnya: [longStem],
+      });
+      expect(res.success).toBe(true);
+      if (res.success) {
+        expect(res.data.soalSebelumnya?.[0].length).toBe(300);
+      }
+    });
+
     it("harus menolak output AI jika opsi PG tidak berjumlah 4", () => {
       const res = AiQuizOutputSchema.safeParse({
         soalPg: [
