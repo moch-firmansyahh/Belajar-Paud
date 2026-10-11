@@ -132,7 +132,9 @@ export function FormPengaturanQuiz({ materiList }: FormPengaturanQuizProps) {
     setLoading(true);
     setErrorMessage(null);
 
-    const soalSebelumnya = getSoalLamaStems();
+    const soalSebelumnya = (getSoalLamaStems() || []).map((s) =>
+      typeof s === "string" ? s.slice(0, 250) : ""
+    );
 
     try {
       const response = await fetch("/api/quiz/generate", {

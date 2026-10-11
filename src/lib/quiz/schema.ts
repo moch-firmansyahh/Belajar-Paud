@@ -16,8 +16,8 @@ export const GenerateQuizRequestSchema = z
     jumlahEssay: z.number().int().min(0).max(3),
     kesulitan: z.enum(["mudah", "sedang", "sulit", "campur"]),
     soalSebelumnya: z
-      .array(z.string().max(300))
-      .max(30)
+      .array(z.string().transform((s) => s.slice(0, 300)))
+      .max(50)
       .optional()
       .default([]),
   })

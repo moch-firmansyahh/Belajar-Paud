@@ -54,11 +54,12 @@ export function useQuizHistory() {
 
       // 2. Simpan pokok soal lama untuk mencegah duplikasi (maksimal 30 item)
       if (newStems.length > 0) {
+        const sanitized = newStems.map((s) => s.slice(0, 250));
         const existingStems = getLocalStorageItem<string[]>(
           STORAGE_KEYS.SOAL_LAMA,
           []
         );
-        const combined = Array.from(new Set([...newStems, ...existingStems])).slice(
+        const combined = Array.from(new Set([...sanitized, ...existingStems])).slice(
           0,
           MAX_OLD_STEMS
         );
